@@ -18,6 +18,13 @@ jobs:
         java: ['17', '21']
     steps:
       - uses: actions/checkout@v4
+      # deps.edn declares {:local/root "../xml"} — checkout the sibling repo
+      # one level up from $GITHUB_WORKSPACE, matching the west/orgs/kotoba-lang/*
+      # sibling-directory layout this repo's deps.edn assumes locally.
+      - uses: actions/checkout@v4
+        with:
+          repository: kotoba-lang/xml
+          path: ../xml
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
