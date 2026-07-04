@@ -1,4 +1,8 @@
-# kotoba-lang/materialx
+# kotoba-lang/org-materialx
+
+(renamed from `kotoba-lang/materialx` 2026-07-05 — reverse-domain naming for
+an external-spec-name repo, materialx.org, same ADR-2607041500 rename
+precedent as `org-khronos-glb`/`org-khronos-gltf`/`org-openusd`.)
 
 MaterialX XML builders — plus (ADR-0048 §4, `com-junkawasaki/root`) a real standard
 node-definition table, a dependency-free `.mtlx` XML parser, and a bridge to
