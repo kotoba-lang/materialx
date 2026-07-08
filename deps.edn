@@ -1,5 +1,5 @@
 {:paths ["src"]
- :deps {io.github.kotoba-lang/xml {:local/root "../xml"}}
+ :deps {io.github.kotoba-lang/xml {:git/sha "568e022a38bea2d97dda2487b930d48d8a61609c"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {io.github.cognitect-labs/test-runner {:git/tag "v0.5.1" :git/sha "dfb30dd"}}
