@@ -17,33 +17,29 @@ jobs:
       matrix:
         java: ['17', '21']
     steps:
-      # deps.edn declares {:local/root "../xml"} — actions/checkout's `path`
-      # can't traverse above $GITHUB_WORKSPACE, so both repos are checked out
-      # as true siblings under $GITHUB_WORKSPACE (materialx/ + xml/), matching
-      # the west/orgs/kotoba-lang/* sibling-directory layout this repo assumes
-      # locally, and all later steps run with working-directory: materialx.
       - uses: actions/checkout@v4
-        with:
-          path: materialx
-      - uses: actions/checkout@v4
-        with:
-          repository: kotoba-lang/xml
-          path: xml
-      - uses: actions/setup-java@v4
+
+      - name: Setup JDK ${{ matrix.java }}
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: ${{ matrix.java }}
-      - uses: DeLaGuardo/setup-clojure@13.1
+
+      - name: Setup Clojure CLI
+        uses: DeLaGuardo/setup-clojure@13.1
         with:
           cli: latest
           github-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/cache@v4
+
+      - name: Cache m2 / gitlibs
+        uses: actions/cache@v4
         with:
           path: |
             ~/.m2
             ~/.gitlibs
-          key: ${{ runner.os }}-jdk${{ matrix.java }}-clj-${{ hashFiles('materialx/deps.edn') }}
+          key: ${{ runner.os }}-jdk${{ matrix.java }}-clj-${{ hashFiles('deps.edn') }}
           restore-keys: |
             ${{ runner.os }}-jdk${{ matrix.java }}-clj-
-      - run: clojure -M:test
-        working-directory: materialx
+
+      - name: Run tests
+        run: clojure -M:test
