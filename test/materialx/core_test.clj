@@ -3,7 +3,7 @@
    self-closing leaves, nested-element indentation, the <?xml?> declaration and <materialx> root, and
    the value helper. MaterialX is XML so this is hiccup in its original form."
   (:require [clojure.test :refer [deftest is]]
-            [clojure.string :as str]
+            [kotoba.lang.text :as str]
             [kotoba.materialx :as mx]
             [kotoba.xml :as xml]))
 
