@@ -28,7 +28,7 @@
      docstrings for exactly what is and isn't covered (MToon has no MaterialX standard-node
      equivalent and is refused, not faked)."
   (:require [xml.core :as xml]
-            [clojure.string :as str]))
+            [kotoba.lang.text :as str]))
 
 ;; ---------------------------------------------------------------------------
 ;; Emission (pre-existing)
