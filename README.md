@@ -38,5 +38,5 @@ Namespaces:
 ## Test
 
 ```sh
-clojure -M:test
+kbb -M:test
 ```
